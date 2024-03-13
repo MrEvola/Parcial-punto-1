@@ -33,12 +33,27 @@
             background-color: #0056b3;
         }
     </style>
+    <script>
+        var autos = {
+            "Ferrari": "url_de_la_imagen_ferrari",
+            "Mazda": "url_de_la_imagen_mazda",
+            "Lamborghini": "url_de_la_imagen_lamborghini",
+            "Supra": "url_de_la_imagen_supra",
+            "BMW": "url_de_la_imagen_bmw",
+            "Chevrolet": "url_de_la_imagen_chevrolet"
+        };
+
+        function mostrarImagen() {
+            var marca = document.getElementById('query').value;
+            document.getElementById('imagenAuto').src = autos[marca];
+        }
+    </script>
 </head>
 <body>
     <h1>Búsqueda de Vehículos Deportivos</h1>
-    <form action="/buscar" method="get">
+    <form onsubmit="event.preventDefault(); mostrarImagen();">
         <label for="query">Buscar:</label>
-        <select name="query" id="query">
+        <select name="query" id="query" onchange="mostrarImagen()">
             <option value="Ferrari">Ferrari</option>
             <option value="Mazda">Mazda</option>
             <option value="Lamborghini">Lamborghini</option>
@@ -48,5 +63,6 @@
         </select>
         <input type="submit" value="Buscar">
     </form>
+    <img id="imagenAuto" src="" alt="Imagen del auto">
 </body>
 </html>
