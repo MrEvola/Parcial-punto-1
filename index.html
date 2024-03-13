@@ -39,25 +39,25 @@
     </style>
     <script>
         var autos = {
-            "Ferrari": "https://phantom-expansion.unidadeditorial.es/d2b2584aca2d3c7f5fbbd787fb9e5bc2/crop/0x725/2043x1875/resize/1200/f/jpg/assets/multimedia/imagenes/2022/05/20/16530388017130.jpg",
-            "Mazda": "https://upload.wikimedia.org/wikipedia/commons/9/95/Mazda_Roadster_%28MX-5%29_by_Negawa_Bridge_%28cropped%29.jpg",
-            "Lamborghini": "https://upload.wikimedia.org/wikipedia/commons/c/ca/2017_Lamborghini_Huracan_LP610.jpg",
-            "Supra": "https://di-uploads-pod16.dealerinspire.com/toyotaofnorthcharlotte/uploads/2019/01/N-Charlotte-Toyota-sports-car.jpeg",
-            "BMW": "https://www.bmw.com.co/content/dam/bmw/common/all-models/m-series/series-overview/bmw-m-series-seo-overview-ms-04.jpg",
-            "Chevrolet": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/2019_Chevrolet_Camaro_base%2C_front_11.9.19.jpg/1200px-2019_Chevrolet_Camaro_base%2C_front_11.9.19.jpg"
+            "Ferrari": {"imagen": "url_de_la_imagen_ferrari", "precio": "$250.000"},
+            "Mazda": {"imagen": "url_de_la_imagen_mazda", "precio": "$20.000"},
+            "Lamborghini": {"imagen": "url_de_la_imagen_lamborghini", "precio": "$200.000"},
+            "Supra": {"imagen": "url_de_la_imagen_supra", "precio": "$45.000"},
+            "BMW": {"imagen": "url_de_la_imagen_bmw", "precio": "$30.000"},
+            "Chevrolet": {"imagen": "url_de_la_imagen_chevrolet", "precio": "$50.000"}
         };
 
-        function mostrarImagen() {
+        function mostrarImagenYPrecio() {
             var marca = document.getElementById('query').value;
-            document.getElementById('imagenAuto').src = autos[marca];
-        }
+            document.getElementById('imagenAuto').src = autos[marca].imagen;
+            document.getElementById('precioAuto').textContent = autos[marca].precio;
     </script>
 </head>
 <body>
     <h1>Búsqueda de Vehículos Deportivos</h1>
-    <form onsubmit="event.preventDefault(); mostrarImagen();">
+    <form onsubmit="event.preventDefault(); mostrarImagenYPrecio();">
         <label for="query">Buscar:</label>
-        <select name="query" id="query" onchange="mostrarImagen()">
+        <select name="query" id="query" onchange="mostrarImagenYPrecio()">
             <option value="Ferrari">Ferrari</option>
             <option value="Mazda">Mazda</option>
             <option value="Lamborghini">Lamborghini</option>
@@ -68,5 +68,6 @@
         <input type="submit" value="Buscar">
     </form>
     <img id="imagenAuto" src="" alt="Imagen del auto">
+    <p id="precioAuto"></p>
 </body>
 </html>
